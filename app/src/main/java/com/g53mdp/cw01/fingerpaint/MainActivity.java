@@ -135,23 +135,29 @@ public class MainActivity extends AppCompatActivity {
     }
     private int brushAdaptor(Paint.Cap brush){return brush.ordinal();}
 
-    /*
-    * Color settings*/
+    /**
+     * Set brush color only
+     * @param color
+     */
     private void setPaintSettings(int color){
         paintView.setColour(color);
         Log.d(ACT,"setPaintSettings - new color added");
     }
 
-    /*
-    * Brush settings*/
+    /**
+     * Set brush shape and size
+     * @param brushShape
+     * @param brushSize
+     */
     private void setPaintSettings(Paint.Cap brushShape, int brushSize){
         paintView.setBrush(brushShape);
         paintView.setBrushWidth(brushSize);
         Log.d(ACT,"setPaintSettings - new brush settings added");
     }
 
-    /*
-    * Default ini / saved settings*/
+    /**
+     * Set default ini or saved settings
+     */
     private void setPaintSettings(){
         SharedPreferences settings = getSharedPreferences(SHARED_PREF, 0);
 
@@ -169,6 +175,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d(ACT,"Paint settings loaded / init");
     }
 
+    /**
+     * Save the brush color, shape and size in shared preferences as
+     * primitive data
+     */
     private void saveSettings(){
         SharedPreferences settings = getSharedPreferences(SHARED_PREF, 0);
         SharedPreferences.Editor editor = settings.edit();
