@@ -166,16 +166,7 @@ public class FingerPainterView extends View {
         // called after the activity has been created when the view is inflated
         if(bitmap==null) {
             if(uri!=null) {
-                try {
-                    // attempt to load the uri provided, scale to fit our canvas
-                    InputStream stream = context.getContentResolver().openInputStream(uri);
-                    Bitmap bm = BitmapFactory.decodeStream(stream);
-                    bitmap  = Bitmap.createScaledBitmap(bm, Math.max(w, h), Math.max(w, h), false);
-                    stream.close();
-                    bm.recycle();
-                } catch(IOException e) {
-                    Log.e("FingerPainterView", e.toString());
-                }
+                this.bitmap = getBitmapFromUri(w, h,this.uri);
             }
             else {
                 // create a square bitmap so is drawable even after rotation to landscape
@@ -207,5 +198,31 @@ public class FingerPainterView extends View {
                 break;
         }
         return true;
+    }
+
+    public void clearCanvas(){
+        if (this.uri==null){
+            this.canvas.drawColor(Color.WHITE);
+        }else {
+            this.bitmap = getBitmapFromUri(this.canvas.getWidth(), this.canvas.getHeight(),this.uri);
+            canvas.setBitmap(this.bitmap);
+        }
+
+        invalidate();
+    }
+
+    private Bitmap getBitmapFromUri(int w, int h, Uri uri){
+        Bitmap bitmap = null;
+        try {
+            // attempt to load the uri provided, scale to fit our canvas
+            InputStream stream = context.getContentResolver().openInputStream(uri);
+            Bitmap bm = BitmapFactory.decodeStream(stream);
+            bitmap  = Bitmap.createScaledBitmap(bm, Math.max(w, h), Math.max(w, h), false);
+            stream.close();
+            bm.recycle();
+        } catch(IOException e) {
+            Log.e("FingerPainterView", e.toString());
+        }
+        return bitmap;
     }
 }

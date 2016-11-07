@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
     // ## Event methods ## //
 
     public void onColor(View v){
+        Log.d(ACT,"onColor pressed");
+
         int currentColor = paintView.getColour();
 
         Bundle bundle = new Bundle();
@@ -80,9 +82,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this,ColorPicker.class);
         intent.putExtras(bundle);
 
-        Log.d(ACT,"onColor pressed");
-
         startActivityForResult(intent,COLOR_PICKER_REQUEST_CODE);
+    }
+
+    public void onClear(View view){
+        Log.d(ACT,"onClear pressed");
+        paintView.clearCanvas();
     }
 
     public void onBrush(View v){
