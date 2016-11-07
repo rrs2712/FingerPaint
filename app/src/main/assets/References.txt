@@ -1,0 +1,29 @@
+References
+
+FingerPainterView
+https://github.com/mdf/g53mdp/blob/master/FingerPainter/FingerPainterView.java
+
+RadioButton
+https://developer.android.com/guide/topics/ui/controls/radiobutton.html
+
+SeekBar & Listener
+https://developer.android.com/reference/android/widget/SeekBar.html
+https://developer.android.com/reference/android/widget/SeekBar.OnSeekBarChangeListener.html
+
+Shared Prefefrences
+https://developer.android.com/guide/topics/data/data-storage.html#pref
+
+Enum methods
+https://docs.oracle.com/javase/7/docs/api/java/lang/Enum.html
+
+Broadcast a service
+https://developer.android.com/guide/components/intents-filters.html
+
+Permissions
+https://developer.android.com/guide/topics/manifest/uses-permission-element.html
+
+Manifest - Activity
+https://developer.android.com/guide/topics/manifest/activity-element.html
+
+Canvas - Invalidate
+https://developer.android.com/reference/android/view/View.html#invalidate()
